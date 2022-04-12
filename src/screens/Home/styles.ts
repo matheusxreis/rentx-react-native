@@ -1,5 +1,12 @@
+import { FlatListProps } from 'react-native';
+//import { FlatList } from 'react-native-gesture-handler';
+
+import { FlatList } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native'
+
+import { ICarDTO } from '../../dtos/ICarDTO';
+
 
 export const Container = styled.View`
     flex:1;
@@ -43,7 +50,8 @@ font-family: ${({theme})=> theme.fonts.primary_400};
 color: ${({theme})=>theme.colors.text};
 `
 
-export const CartList = styled.FlatList.attrs({
+export const CartList = styled(
+    FlatList as new (props:FlatListProps<ICarDTO>) => FlatList<ICarDTO>).attrs({
     contentContainerStyle: {
         padding:24
     },

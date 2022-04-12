@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StatusBar } from 'react-native';
 
 import { RFValue } from 'react-native-responsive-fontsize'; 
 import Logo from '../../assets/logo.svg'
 import { Car } from '../../components/Car';
+import { api } from '../../services/api';
 
 import {
 Container,
@@ -14,10 +15,14 @@ HeaderContent,
 CartList
 } from './styles';
 
-
+import { ICarDTO } from '../../dtos/ICarDTO';
+import { Load } from '../../components/Load';
 
 
 export function Home(){
+
+   const [cars, setCars] = useState<ICarDTO[]>([]);
+   const [loading, setLoading] = useState(true);
 
    const navigation = useNavigation();
 
@@ -35,6 +40,27 @@ export function Home(){
       function handleCardDetails(){
          navigation.navigate("CarDetails")
       }
+
+      useEffect(()=>{
+         async function fetchCars(){
+
+            try{        
+               console.log("AAAE4433433"); 
+             const response = await api.get("/cars");
+
+             setCars(response.data);
+
+             console.log(response.data)
+
+            }catch(err){
+               console.log(err)
+            }finally {
+               setLoading(false)
+            }
+      }
+         fetchCars();
+      }, [])
+      
 return (
            <Container>
               <StatusBar
@@ -50,19 +76,21 @@ return (
                height={RFValue(12)}
                />
                <TotalCars>
-                  Total de: 12 carros.
+                 { cars.length ? `Total de: ${cars.length} carros.`: ''}
                </TotalCars>
                </HeaderContent>
             </Header>
-        
+        {loading ?
+        <Load/> :
         <CartList 
-        data={[1,2,3, 4, 5, 6, 7, 8, 9, 10]}
-        keyExtractor={item=>String(item)}
-        renderItem={({item})=> <Car 
+        data={cars}
+        keyExtractor={item=>item.id}
+        renderItem={({item})=> 
+        <Car 
         onPress={handleCardDetails} 
-        data={carData}/> }
+        data={item}/> }
         />
-           
+        }
           
 
             </Container>

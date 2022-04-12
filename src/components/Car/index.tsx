@@ -15,23 +15,19 @@ CardImage
 
 import GasolineSvg from '../../assets/gasoline.svg'
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
+import { ICarDTO } from '../../dtos/ICarDTO';
 
-interface ICardData {
-    brand:string;
-    name:string;
-    rent: {
-        period: string;
-        price: number;
-    },
-    thumbnail:string;
-}
 
 
 interface ICardProps extends RectButtonProps {
-    data: ICardData
+    data: ICarDTO
 }
 
+
+
 export function Car({ data, ...rest } : ICardProps){
+
+
 return (
            <Container {...rest}>
                <Details>

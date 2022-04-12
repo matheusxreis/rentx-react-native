@@ -15,7 +15,10 @@ export function StackRoutes(){
 
     return (
         <Navigator
-        headerMode="none">
+        screenOptions={{
+          headerShown:false
+          }}
+          >          
             <Screen
             name="Home"
             component={Home}

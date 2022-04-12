@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 export const Container = styled(RectButton)`
    width:100%;
 
-   height:126px;
+   height:${RFValue(126)}px;
 
    background-color: ${({theme})=>theme.colors.background_secondary};
 
