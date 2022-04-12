@@ -128,7 +128,8 @@ return (
                <Footer>
                   <Button 
                   onPress={()=>{}}
-                  title="Confirmar"/>
+                  color={theme.colors.success}
+                  title="Alugar agora"/>
                </Footer>
             </Container>
                );
