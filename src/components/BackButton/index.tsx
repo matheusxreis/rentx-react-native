@@ -22,7 +22,7 @@ return (
                <MaterialIcons
                name="chevron-left"
                size={24}
-               COLOR={color ? color : theme.colors.text}
+               color={color ? color : theme.colors.text}
                />
 
             </Container>
