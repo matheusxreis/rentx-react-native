@@ -19,10 +19,19 @@ Footer
 import ArrowSvg from '../../assets/arrow.svg'
 import { Button } from '../../components/Button';
 import { Calendar } from '../../components/Calendar';
+import { useNavigation } from '@react-navigation/native';
 
 export function Scheduling(){
 
-    const theme = useTheme()
+    const theme = useTheme();
+
+    const navigation = useNavigation();
+
+   function handleConfirmRental(){
+      navigation.navigate("SchedulingDetails")
+   }
+
+
 return (
            <Container>
 
@@ -74,7 +83,7 @@ return (
 
                <Footer>
                <Button
-               onPress={()=>{}}
+               onPress={()=>handleConfirmRental()}
                title="Confirmar" />
                </Footer>
             </Container>

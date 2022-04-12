@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 import { StatusBar } from 'react-native';
 
@@ -18,6 +19,8 @@ CartList
 
 export function Home(){
 
+   const navigation = useNavigation();
+
    const carData = {
       thumbnail:'https://www.pngmart.com/files/1/Audi.png',
       brand: "Audi",
@@ -26,6 +29,12 @@ export function Home(){
          period: "Ao dia",
          price: 120
       } }
+
+
+
+      function handleCardDetails(){
+         navigation.navigate("CarDetails")
+      }
 return (
            <Container>
               <StatusBar
@@ -49,7 +58,9 @@ return (
         <CartList 
         data={[1,2,3, 4, 5, 6, 7, 8, 9, 10]}
         keyExtractor={item=>String(item)}
-        renderItem={({item})=> <Car data={carData}/> }
+        renderItem={({item})=> <Car 
+        onPress={handleCardDetails} 
+        data={carData}/> }
         />
            
           

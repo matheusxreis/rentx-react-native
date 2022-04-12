@@ -29,8 +29,16 @@ import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Acessory } from '../../components/Acessory';
 import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
 
 export function CarDetails(){
+
+   const navigation =useNavigation();
+
+   function handleConfirmRental(){
+      navigation.navigate("Scheduling")
+   }
+
 return (
            <Container>
                <Header>
@@ -76,8 +84,8 @@ return (
 
                <Footer>
                   <Button 
-                  onPress={()=>{}}
-                  title="Confirmar"/>
+                  onPress={()=>handleConfirmRental()}
+                  title="Escolher período do aluguel"/>
                </Footer>
             </Container>
                );

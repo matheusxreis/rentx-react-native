@@ -9,13 +9,15 @@ Title
 
 interface IConfirmButtonProps extends RectButtonProps {
     title:string;
+    onPress:()=>void;
 }
 
 export function ConfirmButton({
-title
+title,
+onPress
 }: IConfirmButtonProps){
 return (
-           <Container>
+           <Container onPress={onPress}>
                <Title> {title} </Title>
 
             </Container>
