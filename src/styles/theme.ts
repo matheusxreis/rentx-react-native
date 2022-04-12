@@ -10,7 +10,7 @@ export const theme = {
     text_details:"#aeaeb3",
     title: "#47474d",
 
-    line: "#ebebef0",
+    line: "#ebebef",
 
     main: "#dc1617",
     main_light: "#fdedef",
