@@ -28,7 +28,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { ICarDTO } from '../../dtos/ICarDTO';
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
-interface IParams {
+export interface IParams {
    car: ICarDTO;
 }
 
@@ -45,7 +45,7 @@ export function CarDetails(){
 
 
    function handleConfirmRental(){
-      navigation.navigate("Scheduling");
+      navigation.navigate("Scheduling", {car});
    }
 
    function handleBack(){

@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { ColorPropType, StatusBar } from 'react-native';
+import React, {useRef, useState} from 'react'
+import { Alert, ColorPropType, StatusBar } from 'react-native';
 import { useTheme } from 'styled-components';
 import { BackButton } from '../../components/BackButton';
 
@@ -19,10 +19,11 @@ Footer
 import ArrowSvg from '../../assets/arrow.svg'
 import { Button } from '../../components/Button';
 import { Calendar, IDayProps, IMarkedDateProps } from '../../components/Calendar';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { generateInterval } from '../../components/Calendar/generateInterval';
 import { getPlataformDate } from '../../components/Calendar/getPlataformDate';
 import { format, parseISO } from 'date-fns';
+import { IParams } from '../CarDetails';
 
 interface IRentalPeriod {
 start: number;
@@ -40,8 +41,21 @@ export function Scheduling(){
 
     const navigation = useNavigation();
 
+    const route = useRoute();
+
+    const { car } = route.params as IParams;
+
    function handleConfirmRental(){
-      navigation.navigate("SchedulingDetails")
+
+     if(!rentalPeriod.start || !rentalPeriod.end){
+          return Alert.alert('Selecione o intervalo para alugar.')
+     }else {
+          navigation.navigate("SchedulingDetails", {
+               car,
+               dates: Object.keys(markedDates),
+          })
+
+     }
    }
 
    function handleBack(){
