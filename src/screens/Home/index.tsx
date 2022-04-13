@@ -36,7 +36,7 @@ export function Home(){
          async function fetchCars(){
 
             try{        
-               console.log("AAAE4433433"); 
+             console.log("AAAE4433433"); 
              const response = await api.get("/cars");
 
              setCars(response.data);
