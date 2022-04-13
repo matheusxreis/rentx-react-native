@@ -11,14 +11,15 @@ import { BorderlessButtonProps } from 'react-native-gesture-handler'
 
 interface IBackButtonProps extends BorderlessButtonProps{
     color?:string;
+    onPress:()=>void;
 
 }
 
-export function BackButton({color, ...rest}: IBackButtonProps){
+export function BackButton({color, onPress, ...rest}: IBackButtonProps){
 
     const theme = useTheme()
 return (
-           <Container>
+           <Container onPress={onPress}>
                <MaterialIcons
                name="chevron-left"
                size={24}

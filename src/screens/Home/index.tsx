@@ -26,19 +26,10 @@ export function Home(){
 
    const navigation = useNavigation();
 
-   const carData = {
-      thumbnail:'https://www.pngmart.com/files/1/Audi.png',
-      brand: "Audi",
-      name: "RS 5 Coupé",
-      rent: {
-         period: "Ao dia",
-         price: 120
-      } }
+   
 
-
-
-      function handleCardDetails(){
-         navigation.navigate("CarDetails")
+      function handleCardDetails(car: ICarDTO){
+         navigation.navigate("CarDetails", { car })
       }
 
       useEffect(()=>{
@@ -87,7 +78,7 @@ return (
         keyExtractor={item=>item.id}
         renderItem={({item})=> 
         <Car 
-        onPress={handleCardDetails} 
+        onPress={()=>handleCardDetails(item)} 
         data={item}/> }
         />
         }

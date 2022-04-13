@@ -13,7 +13,7 @@ Rent,
 Period,
 Price,
 About,
-Acessories,
+Accessories,
 Footer
 } from './styles';
 
@@ -27,25 +27,40 @@ import PeopleSvg from '../../assets/people.svg'
 
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
-import { Acessory } from '../../components/Acessory';
+import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { ICarDTO } from '../../dtos/ICarDTO';
+
+interface IParams {
+   car: ICarDTO;
+}
+
+
 
 export function CarDetails(){
 
    const navigation =useNavigation();
+   const route = useRoute();
+
+   const { car } = route.params as IParams
+
 
    function handleConfirmRental(){
-      navigation.navigate("Scheduling")
+      navigation.navigate("Scheduling");
+   }
+
+   function handleBack(){
+      navigation.goBack();
    }
 
 return (
            <Container>
                <Header>
-                      <BackButton onPress={()=>{}} /> 
+                      <BackButton onPress={handleBack} /> 
                </Header>
                <CarImages>
-                  <ImageSlider imagesUrl={['https://www.pngmart.com/files/1/Audi.png', '']}/>
+                  <ImageSlider imagesUrl={car.photos}/>
                </CarImages>
 
                <Content>
@@ -53,32 +68,31 @@ return (
                   <Details>
                      <Description>
                         <Brand>
-                        {"Honda"}
+                        {car.brand}
                         </Brand>
                         <Name>
-                        {"Civic"}
+                        {car.name}
                         </Name>
                      </Description>
 
                      <Rent>
-                        <Period> {"Ao dia"} </Period>
-                        <Price> {"R$ 580"} </Price>
+                        <Period> {car.rent.period} </Period>
+                        <Price> {`R$ ${car.rent.price}`} </Price>
                      </Rent>
                   </Details>
 
-                  <Acessories>
-                     <Acessory name="380Km/h" icon={SpeedSvg}/>
-                     <Acessory name="3.2s" icon={AccelerationSvg}/>
-                     <Acessory name="800 HP" icon={ForceSvg}/>
-                     <Acessory name="Gasolina" icon={GasolineSvg}/>
-                     <Acessory name="Auto" icon={ExchangeSvg}/>
-                     <Acessory name="2 pessoas" icon={PeopleSvg}/>
+                  <Accessories>
+                     { car.accessories.map(accessory=> (
+                        <Accessory
+                           key={accessory.type}
+                           name={accessory.name}
+                           icon={SpeedSvg}
+                        />
+                     ))}
 
-                  </Acessories>
+                  </Accessories>
                   <About>
-                     Este é um automóvel desportivo. Surgiu do lendário
-                     touro do líde indultado na praça Real Maestranza de Servilla. 
-                     É um belíssimo carro para quem gosta de acelerar.
+                     {car.about}
                   </About>
                </Content>
 

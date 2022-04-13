@@ -8,16 +8,16 @@ Name
 } from './styles';
 
 
-interface IAcessoryProps {
+interface IAccessoryProps {
     name: string;
     icon: React.FC<SvgProps>
 
 }
 
-export function Acessory({
+export function Accessory({
     name,
     icon: Icon
-}: IAcessoryProps){
+}: IAccessoryProps){
 return (
            <Container>
                <Icon width={32} 

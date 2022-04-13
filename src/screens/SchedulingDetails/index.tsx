@@ -38,7 +38,7 @@ import PeopleSvg from '../../assets/people.svg'
 import {Feather} from '@expo/vector-icons'
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
-import { Acessory } from '../../components/Acessory';
+import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { theme } from '../../styles/theme';
