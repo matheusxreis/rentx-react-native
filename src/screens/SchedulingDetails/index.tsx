@@ -24,7 +24,7 @@ RentalPriceLabel,
 RentalPriceDetails,
 RentalPriceQuota,
 RentalPriceTotal,
-
+MyCarsButton
 } from './styles';
 
 
@@ -47,6 +47,7 @@ import parseISO from 'date-fns/parseISO';
 import { api } from '../../services/api';
 import { Alert } from 'react-native';
 
+import { Ionicons } from '@expo/vector-icons'
 
 interface IParams {
    car: ICarDTO;
@@ -196,6 +197,8 @@ return (
                   color={theme.colors.success}
                   title="Alugar agora"/>
                </Footer>
+
+               
             </Container>
                );
 

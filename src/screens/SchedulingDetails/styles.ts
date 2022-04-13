@@ -1,3 +1,4 @@
+import { RectButton } from 'react-native-gesture-handler';
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native'
@@ -21,6 +22,8 @@ margin-top:${getStatusBarHeight()+18}px;
 margin-left:24px;
 
 `
+
+
 
 export const CarImages = styled.View`
 
