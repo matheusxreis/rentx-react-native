@@ -74,7 +74,7 @@ color: ${({theme})=>theme.colors.shape};
 
 font-family: ${({theme})=> theme.fonts.primary_500};
 
-font-size: ${RFValue(15)}px;
+font-size: ${RFValue(14)}px;
 
 
 `;

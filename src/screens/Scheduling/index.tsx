@@ -21,12 +21,21 @@ import { Button } from '../../components/Button';
 import { Calendar, IDayProps, IMarkedDateProps } from '../../components/Calendar';
 import { useNavigation } from '@react-navigation/native';
 import { generateInterval } from '../../components/Calendar/generateInterval';
+import { getPlataformDate } from '../../components/Calendar/getPlataformDate';
+import { format, parseISO } from 'date-fns';
 
+interface IRentalPeriod {
+start: number;
+startFormatted: string;
+end: number;
+endFormatted: string;
+}
 export function Scheduling(){
 
      const [lastSelectedDate, setLastSelectedDate] = useState<IDayProps>({} as IDayProps)
      const [markedDates, setMarkedDates] = useState<IMarkedDateProps>({} as IMarkedDateProps)
    
+     const [rentalPeriod, setRentalPeriod] = useState<IRentalPeriod>({} as IRentalPeriod)
      const theme = useTheme();
 
     const navigation = useNavigation();
@@ -58,6 +67,17 @@ export function Scheduling(){
 
      setMarkedDates(interval);
 
+     const firstDate = Object.keys(interval)[0]
+
+     const endDate = Object.keys(interval)[Object.keys(interval).length - 1]
+
+     setRentalPeriod({
+          start: start.timestamp,
+          end: end.timestamp,
+
+          startFormatted:format(getPlataformDate(parseISO(firstDate)), 'dd/MM/yyyy'),
+          endFormatted:format(getPlataformDate(parseISO(endDate)), 'dd/MM/yyyy'),
+     })
      console.log(interval)
 
   }
@@ -87,8 +107,8 @@ return (
 
                          <DateInfo>
                               <DateTitle> DE </DateTitle>
-                              <DateValueView selected={false}>
-                                        <DateValue> </DateValue>
+                              <DateValueView selected={!!rentalPeriod.startFormatted}>
+                                        <DateValue> {rentalPeriod?.startFormatted} </DateValue>
                               </DateValueView>
                          </DateInfo>
 
@@ -97,8 +117,8 @@ return (
                          <DateInfo>
                         
                               <DateTitle> DE </DateTitle>
-                              <DateValueView selected={false}>
-                                        <DateValue> </DateValue>
+                              <DateValueView selected={!!rentalPeriod.endFormatted}>
+                                        <DateValue> {rentalPeriod?.endFormatted} </DateValue>
                               </DateValueView>
                          
                          </DateInfo>
