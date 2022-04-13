@@ -83,12 +83,12 @@ return (
                   </Details>
 
                   <Acessories>
-                     <Acessory name="380Km/h" icon={SpeedSvg}/>
-                     <Acessory name="3.2s" icon={AccelerationSvg}/>
-                     <Acessory name="800 HP" icon={ForceSvg}/>
-                     <Acessory name="Gasolina" icon={GasolineSvg}/>
-                     <Acessory name="Auto" icon={ExchangeSvg}/>
-                     <Acessory name="2 pessoas" icon={PeopleSvg}/>
+                     <Accessory name="380Km/h" icon={SpeedSvg}/>
+                     <Accessory name="3.2s" icon={AccelerationSvg}/>
+                     <Accessory name="800 HP" icon={ForceSvg}/>
+                     <Accessory name="Gasolina" icon={GasolineSvg}/>
+                     <Accessory name="Auto" icon={ExchangeSvg}/>
+                     <Accessory name="2 pessoas" icon={PeopleSvg}/>
 
                   </Acessories>
                   

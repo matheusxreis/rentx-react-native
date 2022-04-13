@@ -17,12 +17,7 @@ Accessories,
 Footer
 } from './styles';
 
-import SpeedSvg from '../../assets/speed.svg'
-import AccelerationSvg from '../../assets/acceleration.svg'
-import ForceSvg from '../../assets/force.svg'
-import GasolineSvg from '../../assets/gasoline.svg'
-import ExchangeSvg from '../../assets/exchange.svg'
-import PeopleSvg from '../../assets/people.svg'
+
 
 
 import { BackButton } from '../../components/BackButton';
@@ -31,6 +26,7 @@ import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { ICarDTO } from '../../dtos/ICarDTO';
+import { getAccessoryIcon } from '../../utils/getAccesoryIcon';
 
 interface IParams {
    car: ICarDTO;
@@ -39,6 +35,8 @@ interface IParams {
 
 
 export function CarDetails(){
+
+   
 
    const navigation =useNavigation();
    const route = useRoute();
@@ -86,7 +84,7 @@ return (
                         <Accessory
                            key={accessory.type}
                            name={accessory.name}
-                           icon={SpeedSvg}
+                           icon={getAccessoryIcon(accessory.type)}
                         />
                      ))}
 
