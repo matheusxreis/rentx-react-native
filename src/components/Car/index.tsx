@@ -16,7 +16,7 @@ CardImage
 import GasolineSvg from '../../assets/gasoline.svg'
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 import { ICarDTO } from '../../dtos/ICarDTO';
-import { getAccessoryIcon } from '../../utils/getAccesoryIcon';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 
 

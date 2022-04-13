@@ -26,7 +26,7 @@ import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { ICarDTO } from '../../dtos/ICarDTO';
-import { getAccessoryIcon } from '../../utils/getAccesoryIcon';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 interface IParams {
    car: ICarDTO;
