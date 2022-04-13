@@ -151,7 +151,8 @@ return (
                <Footer>
                <Button
                onPress={()=>handleConfirmRental()}
-               title="Confirmar" />
+               title="Confirmar" 
+               enabled={!!rentalPeriod.endFormatted}/>
                </Footer>
             </Container>
      );

@@ -26,11 +26,14 @@ CarFooterDate,
 } from './styles';
 
 import { AntDesign } from '@expo/vector-icons'
+import { Load } from '../../components/Load';
 interface ICarProps {
      
      car: ICarDTO;
      id:string;
      user_id:string;
+     startDate:string;
+     endDate:string;
 }
 
 export function MyCars(){
@@ -91,10 +94,14 @@ return (
                              
                          </Header>
 
+                         {loading ?
+     
+                         <Load />
+                              :
                          <Content>
                               <Appointments>
                                    <AppointmentsTitle> Agendamentos feitos </AppointmentsTitle>
-                                   <AppointmentsQuantity> 05 </AppointmentsQuantity>
+                                   <AppointmentsQuantity> {cars.length} </AppointmentsQuantity>
 
                               </Appointments>
 
@@ -110,14 +117,14 @@ return (
                                         <CarFooterTitle> Período </CarFooterTitle>
 
                                         <CarFooterPeriod>
-                                             <CarFooterDate> 18/02/2002 </CarFooterDate>
+                                             <CarFooterDate> {item.startDate} </CarFooterDate>
                                              <AntDesign 
                                               name="arrowright"
                                               size={20}
                                               color={theme.colors.title}
                                               style={{marginHorizontal:10}}
                                               />
-                                        <CarFooterDate> 23/02/2002 </CarFooterDate>                                                   
+                                        <CarFooterDate> {item.endDate} </CarFooterDate>                                                   
 
                                         </CarFooterPeriod>
                                    </CarFooter>
@@ -125,6 +132,7 @@ return (
                               )}
                               />
                          </Content>
+                    }
 
             </Container>
      );

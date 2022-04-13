@@ -64,6 +64,8 @@ interface IRentalPeriod {
 export function SchedulingDetails(){
 
    const [rentalPeriod, setRentalPeriod] = useState<IRentalPeriod>({} as IRentalPeriod)
+   const [loading, setLoading] = useState<boolean>(false)
+   
    const theme = useTheme();
 
    const navigation = useNavigation();
@@ -76,7 +78,9 @@ export function SchedulingDetails(){
    async function handleConfirmRental(){
 
       try{
-         const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
+
+         setLoading(true)
+         const schedulesByCar = await apji.get(`/schedules_bycars/${car.id}`);
 
         
       const unavailable_dates = {
@@ -101,7 +105,8 @@ export function SchedulingDetails(){
       navigation.navigate("SchedulingComplete")
    }catch(err){
       console.log(err);
-      Alert.alert('Alguma coisa deu errado.')
+      Alert.alert('Alguma coisa deu errado.');
+      setLoading(false);
    }
    }
 
@@ -203,7 +208,9 @@ return (
                   <Button 
                   onPress={()=>handleConfirmRental()}
                   color={theme.colors.success}
-                  title="Alugar agora"/>
+                  title="Alugar agora"
+                  loading={loading}
+                  enabled={!loading}/>
                </Footer>
 
                
