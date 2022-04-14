@@ -80,7 +80,7 @@ export function SchedulingDetails(){
       try{
 
          setLoading(true)
-         const schedulesByCar = await apji.get(`/schedules_bycars/${car.id}`);
+         const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
 
         
       const unavailable_dates = {

@@ -38,7 +38,9 @@ export function Home(){
       }
 
       function handleOpenMyCars(){
-         navigation.navigate("MyCars")
+         navigation.navigate("MyCars");
+
+         console.log('aaaa')
       }
 
       useEffect(()=>{

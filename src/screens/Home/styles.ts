@@ -1,4 +1,4 @@
-import { FlatListProps } from 'react-native';
+import { FlatListProps, Platform } from 'react-native';
 //import { FlatList } from 'react-native-gesture-handler';
 
 import { FlatList } from 'react-native';
@@ -6,6 +6,8 @@ import { RectButton } from 'react-native-gesture-handler';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Rect } from 'react-native-svg';
 import styled from 'styled-components/native'
+
+import { TouchableOpacity } from 'react-native';
 
 import { ICarDTO } from '../../dtos/ICarDTO';
 
@@ -58,10 +60,10 @@ export const CartList = styled(
         padding:24
     },
     showsVerticalScrollIndicator:false 
-})``
+})``;
 
 
-export const MyCarsButton = styled(RectButton)`
+export const MyCarsButton = styled(Platform.OS === 'android'? RectButton  : TouchableOpacity)`
 
 width:60px;
 height:60px;
